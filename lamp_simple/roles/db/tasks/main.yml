@@ -22,6 +22,8 @@
 
 - name: Start Mysql Service
   service: name=mysqld state=started enabled=yes
+  tags:
+    - already running
 
 - name: insert iptables rule
   lineinfile: dest=/etc/sysconfig/iptables state=present regexp="{{ mysql_port }}"
