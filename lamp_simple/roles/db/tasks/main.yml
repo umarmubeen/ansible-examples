@@ -26,7 +26,7 @@
     - already running
 
 - name: insert iptables rule
-  lineinfile: dest=/etc/sysconfig/iptables state=present regexp="{{ mysql_port }}"
+  lineinfile: dest=/etc/sysconfig/iptables-config state=present regexp="{{ mysql_port }}"
               insertafter="^:OUTPUT " line="-A INPUT -p tcp  --dport {{ mysql_port }} -j  ACCEPT"
   notify: restart iptables
 
